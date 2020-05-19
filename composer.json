@@ -1,0 +1,30 @@
+{
+  "name": "trilbymedia/vcard",
+  "type": "grav-plugin",
+  "description": "Generates dynamic VCards",
+  "keywords": ["plugin"],
+  "homepage": "https://github.com/trilbymedia/grav-plugin-vcard",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Trilby Media, LLC",
+      "email": "hello@trilby.media",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.3",
+    "jeroendesloovere/vcard": "^1.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Grav\\Plugin\\VCard\\": "classes/"
+    },
+    "classmap":  ["vcard.php"]
+  },
+  "config": {
+    "platform": {
+      "php": "7.1.3"
+    }
+  }
+}
