@@ -1,0 +1,9 @@
+{% set name = uri.param('name') %}
+{% set team = page.header.team %}
+{% for contact in team if contact.name == name %}
+    {% set contact_image = contact.image %}
+    {% set contact_photo = page.media[contact_image].url ?: page.media['default.png'].url %}
+    {% set details = {name: contact.name, email: contact.email, title: contact.designation ~ ' ' ~ contact.department, office_phone: contact.phone, photo: url(contact_photo, true)} %}
+    {% set vcard = create_vcard(details) %}
+    {{- vcard.generate -}}
+{% endfor %}

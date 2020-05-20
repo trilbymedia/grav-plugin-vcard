@@ -3,7 +3,7 @@ slug: vcard
 type: plugin
 version: 0.1.0
 description: Generates dynamic VCards
-icon: plug
+icon: address-card-o
 author:
   name: Trilby Media, LLC
   email: hello@trilby.media
@@ -30,7 +30,3 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
-    text_var:
-      type: text
-      label: PLUGIN_VCARD.TEXT_VARIABLE
-      help: PLUGIN_VCARD.TEXT_VARIABLE_HELP
