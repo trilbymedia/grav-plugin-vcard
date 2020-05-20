@@ -1,8 +1,6 @@
 # VCard Plugin
 
-**This README.md file should be modified to describe the features, installation, configuration, and general usage of the plugin.**
-
-The **VCard** Plugin is an extension for [Grav CMS](http://github.com/getgrav/grav). Generates dynamic VCards
+The **VCard** Plugin is an extension for [Grav CMS](http://github.com/getgrav/grav). Generates dynamic VCards.  Generally used via Twig templates in your theme. 
 
 ## Installation
 
@@ -40,17 +38,48 @@ Here is the default configuration and an explanation of available options:
 enabled: true
 ```
 
-Note that if you use the Admin Plugin, a file with your configuration named vcard.yaml will be saved in the `user/config/plugins/`-folder once the configuration is saved in the Admin.
+Note that if you use the Admin Plugin, a file with your configuration named `vcard.yaml` will be saved in the `user/config/plugins/`-folder once the configuration is saved in the Admin.
 
 ## Usage
 
-**Describe how to use the plugin.**
+After installing the plugin you can use it via a Twig template or in your own custom code directly.
+
+> IMPORTANT: You must add the `vcf` type to the list of valid page types in **System Configuration** -> **Pages** section.
+
+In this example, the page expects a parameter of 'name' in order to know which user to display the vcard for.
+
+In a company directory you would then setup a link such as:
+
+```twig
+<a href="{{ url('/contact.vcf/name:' ~ user.name|url_encode) }}"><i class="fa fa-address-card-o"></i> VCard</a>
+```
+
+An example Twig template is provided as `templates/contact.vcf.twig`:
+
+```twig
+{% set name = uri.param('name') %}
+{% set team = page.header.team %}
+{% for contact in team if contact.name == name %}
+    {% set contact_image = contact.image %}
+    {% set contact_photo = page.media[contact_image].url ?: page.media['default.png'].url %}
+    {% set details = {name: contact.name, email: contact.email, title: contact.designation ~ ' ' ~ contact.department, office_phone: contact.phone, photo: url(contact_photo, true)} %}
+    {% set vcard = create_vcard(details) %}
+    {{- vcard.generate -}}
+{% endfor %}
+```
+
+You should copy this file and modify it as you see fit.
+
+> NOTE: See the `classes/VCardPerson.php` for current list of supported features
 
 ## Credits
 
-**Did you incorporate third-party code? Want to thank somebody?**
+This plugin is built on top of https://github.com/jeroendesloovere/vcard VCard library.
 
 ## To Do
 
-- [ ] Future plans, if any
+- [ ] Add more VCard properties to the `VCardPerson` class
+- [ ] Investigate issue with `vcf` page type not being auto-added
+- [ ] Make a generic example that works out-of-the-box
+
 
