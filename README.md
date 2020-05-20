@@ -79,7 +79,7 @@ This plugin is built on top of https://github.com/jeroendesloovere/vcard VCard l
 ## To Do
 
 - [ ] Add more VCard properties to the `VCardPerson` class
-- [ ] Fix issue with `vcf` page type not being auto-added
+- [ ] Investigate issue with `vcf` page type not being auto-added
 - [ ] Make a generic example that works out-of-the-box
 
 
