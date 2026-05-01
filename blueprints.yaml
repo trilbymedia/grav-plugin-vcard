@@ -1,7 +1,7 @@
 name: VCard
 slug: vcard
 type: plugin
-version: 0.1.0
+version: 0.1.1
 description: Generates dynamic VCards
 icon: address-card-o
 author:
@@ -13,6 +13,9 @@ keywords: grav, plugin, etc
 bugs: https://github.com/trilbymedia/grav-plugin-vcard/issues
 docs: https://github.com/trilbymedia/grav-plugin-vcard/blob/develop/README.md
 license: MIT
+
+compatibility:
+  grav: ['1.7', '2.0']
 
 dependencies:
   - { name: grav, version: '>=1.6.0' }
