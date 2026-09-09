@@ -1,7 +1,7 @@
 name: VCard
 slug: vcard
 type: plugin
-version: 0.1.1
+version: 0.1.2
 description: Generates dynamic VCards
 icon: address-card-o
 author:
